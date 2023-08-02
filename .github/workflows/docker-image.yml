@@ -31,8 +31,13 @@ jobs:
       run: |
         echo "Iniciando la construccion"
         docker build -t jalaraticona/docker-graphql:1.0.0 .
-        docker push jalaraticona/docker-graphql:1.0.0
+        docker build -t jalaraticona/docker-graphql:latest .
         echo "Finalizando la construccion"
+    
+    - name: Push Docker Image
+      run: |
+        docker push jalaraticona/docker-graphql:1.0.0
+        docker push jalaraticona/docker-graphql:latest
     
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
